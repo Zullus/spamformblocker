@@ -28,18 +28,18 @@ class BademailController extends Controller
 
     public function procura($email){
 
-        $bademail = \App\Bademail::where('ativo',1 )->where('email', $email)->get();
+        $bademail = \App\Bademail::where('ativo',1 )->where('email', $email)->exists();
 
         if(!$bademail){
 
-            $resposta = array('Falha' => 'E-mail não está bloqueado');
+            $resposta = array('Resposta' => 'E-mail não está bloqueado', 'Cod' => 0);
 
             return response()->json($resposta, 404);
 
         }
 
         else{
-            $resposta = array('Sucesso' => 'E-mail não está bloqueado');
+            $resposta = array('Resposta' => 'E-mail está bloqueado', 'Cod' => 1);
 
             return response()->json($resposta, 200);
         }
@@ -52,7 +52,7 @@ class BademailController extends Controller
         $procura = \App\Bademail::where('email', $email)->exists();
 
         if($procura){
-            $err = array('Erro', 'E-mail já bloqueado');
+            $err = array('Resposta' => 'E-mail já bloqueado', 'Cod' => 2);
 
             return response()->json($err, 512);
         }
@@ -65,7 +65,7 @@ class BademailController extends Controller
                 ->where('email', $email)
                 ->restore();
 
-            $suss = array('OK', 'E-mail Bloqueado');
+            $suss = array('Resposta' => 'E-mail Bloqueado', 'Cod' => 3);
 
             return response()->json($suss, 200);
         }
@@ -78,13 +78,13 @@ class BademailController extends Controller
 
         if(!$result){
 
-            $err = array('Erro', 'Não foi bloquear');
+            $err = array('Resposta' => 'Não foi bloquear', 'Cod' => 4);
 
             return response()->json($err, 502);
 
         }
 
-        $suss = array('OK', 'E-mail Bloqueado');
+        $suss = array('Resposta' => 'E-mail Bloqueado', 'Cod' => 3);
 
         return response()->json($suss, 200);
 
@@ -107,12 +107,12 @@ class BademailController extends Controller
 
             $bademail->delete();
 
-            $suss = array('OK', 'E-mail Desbloqueado');
+            $suss = array('Resposta' => 'E-mail Desbloqueado', 'Cod' => 5);
 
             return response()->json($suss, 200);
         }
 
-        $err = array('Erro', 'E-mail não está bloqueado');
+        $err = array('Resposta' => 'E-mail não está bloqueado', 'Cod' => 6);
 
         return response()->json($err, 512);
 

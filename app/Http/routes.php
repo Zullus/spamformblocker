@@ -15,12 +15,7 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get('foo', function () {
-    return 'Hello World';
-});
-
 $app->get('emails', 'BademailController@show');
-
 
 $app->get('emails/{email}', 'BademailController@procura');
 
@@ -28,4 +23,3 @@ $app->put('emails/{email}', 'BademailController@insere');
 
 $app->delete('emails/{email}', 'BademailController@retira');
 
-//$app->get('user/{id}', 'UserController@show');
