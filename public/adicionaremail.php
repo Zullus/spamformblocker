@@ -9,11 +9,14 @@ if(!$email){
 
 }
 
+$url = "http://spamformblocker.xs/";
+//$url = "http://spamformblocker.xsinformatica.com.br/";
+
 // create curl resource
 $ch = curl_init();
 
 // set url
-curl_setopt($ch, CURLOPT_URL, "http://spamformblocker.xs/emails/" . $email);
+curl_setopt($ch, CURLOPT_URL, $url . "emails/" . $email);
 
 // set type
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
