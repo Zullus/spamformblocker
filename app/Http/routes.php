@@ -23,3 +23,6 @@ $app->put('emails/{email}', 'BademailController@insere');
 
 $app->delete('emails/{email}', 'BademailController@retira');
 
+//Para manejo dos e-mails
+
+$app->post('bloqueia', 'BloqueiaMailController@bloqueia');
