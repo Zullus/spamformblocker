@@ -12,7 +12,9 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+    //return $app->version();
+    //return File::get(public_path() . 'index.html');
+    return redirect('home.php');
 });
 
 $app->get('emails', 'BademailController@show');

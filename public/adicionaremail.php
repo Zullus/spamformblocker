@@ -9,8 +9,7 @@ if(!$email){
 
 }
 
-//$url = "http://spamformblocker.xs/";
-$url = "http://spamformblocker.xsinformatica.com.br/";
+$url = $_SERVER['HTTP_HOST'] . '/';
 
 // create curl resource
 $ch = curl_init();
@@ -31,6 +30,10 @@ $output = curl_exec($ch);
 curl_close($ch);
 
 $s = json_decode($output);
+
+@header("Location: home.php?s=" . $s->Cod . "&r=" . $s->Resposta);
+
+exit;
 
 if($s->Cod == 3){
 
