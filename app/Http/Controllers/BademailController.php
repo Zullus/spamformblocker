@@ -75,7 +75,14 @@ class BademailController extends Controller
 
         $ip = $_SERVER['REMOTE_ADDR'];
 
-        $useragent = $_SERVER['HTTP_USER_AGENT'];
+        if(isset($_SERVER['HTTP_USER_AGENT'])){
+
+            $useragent = $_SERVER['HTTP_USER_AGENT'];
+
+        }
+        else{
+            $useragent = 'Unknow';
+        }
 
         if($this->validaemail($email) == false){
 

@@ -31,7 +31,7 @@ $output = curl_exec($ch);
 curl_close($ch);
 
 $s = json_decode($output);
-var_dump($s);
+
 if($s->Cod == 3){
 
 	echo 'E-mail foi bloqueado com sucesso';
