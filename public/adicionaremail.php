@@ -9,8 +9,8 @@ if(!$email){
 
 }
 
-$url = "http://spamformblocker.xs/";
-//$url = "http://spamformblocker.xsinformatica.com.br/";
+//$url = "http://spamformblocker.xs/";
+$url = "http://spamformblocker.xsinformatica.com.br/";
 
 // create curl resource
 $ch = curl_init();
